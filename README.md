@@ -801,6 +801,7 @@ name: gui
 ```
 * remak all step on the PROBLEM OF DISPLAY
 * if problem still persists ; change by other number
+  
 ## Testing jammer
-
+lxc exec HackrfJAM -- gnuradio-companion
 
