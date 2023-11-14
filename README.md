@@ -91,6 +91,33 @@ cd ../..
 ```
 # INSTALLING GRC 38 + CLEVER JAM
 ```
+sudo apt-get -y install autoconf automake build-essential ccache cmake cpufrequtils doxygen ethtool fort77 g++ gir1.2-gtk-3.0 git gobject-introspection gpsd gpsd-clients inetutils-tools libasound2-dev libboost-all-dev libcomedi-dev libcppunit-dev libfftw3-bin libfftw3-dev libfftw3-doc libfontconfig1-dev libgmp-dev libgps-dev libgsl-dev liblog4cpp5-dev libncurses5 libncurses5-dev libpulse-dev libqt5opengl5-dev libqwt-qt5-dev libsdl1.2-dev libtool libudev-dev libusb-1.0-0 libusb-1.0-0-dev libusb-dev libxi-dev libxrender-dev libzmq3-dev libzmq5 ncurses-bin python3-cheetah python3-click python3-click-plugins python3-click-threading python3-dev python3-docutils python3-gi python3-gi-cairo python3-gps python3-lxml python3-mako python3-numpy python3-numpy-dbg python3-opengl python3-pyqt5 python3-requests python3-scipy python3-setuptools python3-six python3-sphinx python3-yaml python3-zmq python3-ruamel.yaml swig wget
 ```
+```
+sudo apt-get install git cmake g++ libboost-all-dev libgmp-dev swig python3-numpy  python3-mako python3-sphinx python3-lxml doxygen libfftw3-dev  libsdl1.2-dev libgsl-dev libqwt-qt5-dev libqt5opengl5-dev python3-pyqt5  liblog4cpp5-dev libzmq3-dev python3-yaml python3-click python3-click-plugins python3-zmq python3-scipy python3-gi python3-gi-cairo gir1.2-gtk-3.0 libcodec2-dev libgsm1-dev libusb-1.0-0 libusb-1.0-0-dev libudev-dev
+```
+#/* </br>
+#git log --since="2022-1-1" --until="2022-1-30" </br>
+#git log --since="2021-1-1" --until="2021-1-10" </br>
+#BEST PRECAUTION : </br>
+https://wiki.gnuradio.org/index.php?title=ModuleNotFoundError#B._Finding_the_Python_library </br>
+https://wiki.gnuradio.org/index.php/UbuntuInstall </br>
+#THE VARIABLE HAS RED CROSS IN GRC, IT IS NOT ERROR ON UBUNTU </br>
+#INSTALLING DEPENDENCIES + GNURADIO USING maint version + LOOK THE DATE </br>
+#FINDING GR-OSMOSDR COMPATIBLE WITH GNURADIO + NEAR (<) THE DATE </br>
+#ALL DEVICES (HACKRF) SHOULD BE NEAR (<) THE DATE OF GR-OSMOSDR  </br>
+#COMPILING BY ORDER :  </br>
+#DRIVER DEVICES -> SOAPYHACKRF ->  SOAPY_UHD -> GR-OSMOSDR </br>
+</br>
+#hackrf 10/12/2020 < 11/01/2021 :  </br>
+#61a06b904dbf5e54da1d84473004db0472950487 </br>
+#soapyhackrf 21/08/2020 < 11/01/2021 : </br>
+#soapyhackrf : 7d530872f96c1cbe0ed62617c32c48ce7e103e1d </br>
+#gr-osmosdr 11/01/2021 : cffef690f29e0793cd2d6c5d028c0c929115f0ac</br>
+</br>
+#INSTALLING GNURADIO maint-3.8 DATE :  </br>
+#1Fevrier 2022 : maint-3.8 or 57bd109d5f0afdf09a3a52e226f464e8a71c5b82 </br>
+#*/ </br>
+ 
 
 
