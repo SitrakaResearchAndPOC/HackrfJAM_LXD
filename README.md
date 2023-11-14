@@ -267,9 +267,268 @@ apt-get update && apt-get clean && apt-get autoremove && apt-get install -y apt-
 ```
 apt-get install -y build-essential cmake git pkg-config python3-mako python3-numpy python3-distutils gcc-9 g++-9 gdb
 ```
+Installing GNURADIO 3.8
+```
+git clone https://github.com/gnuradio/gnuradio
+```
+```
+mv gnuradio gnuradio_38
+```
+```
+cd gnuradio_38
+```
+```
+git checkout maint-3.8  
+```
+#git pull --recurse-submodules=on
+#git submodule update --init
 
+```
+git submodule init && git submodule update
+```
+```
+cd ..
+```
+```
+zip -r  gnuradio_38.zip  gnuradio_38
+```
+#mv gnuradio_38.zip ../../Desktop/ltehack_backup/
+```
+cd gnuradio_38 && mkdir build && cd build
+```
+```
+cmake -DCMAKE_BUILD_TYPE=Release -DPYTHON_EXECUTABLE=/usr/bin/python3.8 ../
+```
+```
+make 
+```
+```
+make test
+```
+```
+make install
+```
+```
+ldconfig
+```
+```
+export PYTHONPATH=/usr/local/lib/python3/dist-packages:/usr/local/lib/python3.8/dist-packages:$PYTHONPATH
+```
+```
+export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+```
+```
+cd ../..
+```
+TEST GNURADIO COMPAGNION
+```
+gnuradio-companion
+```
+Installing gr-osmosdr
+```
+git clone https://github.com/osmocom/gr-osmosdr
+```
+```
+cd gr-osmosdr/
+```
+```
+git checkout cffef690f29e0793cd2d6c5d028c0c929115f0ac
+```
+```
+cd ..
+```
+```
+mv gr-osmosdr gr-osmosdr_grc38
+```
+```
+zip -r gr-osmosdr_grc38.zip gr-osmosdr_grc38
+```
+#mv gr-osmosdr_grc38.zip ../../Desktop/ltehack_backup/
+```
+cd gr-osmosdr_grc38 && mkdir build && cd build
+```
+```
+cmake ..
+```
+```
+make
+```
+```
+make install
+```
+```
+ldconfig
+```
+```
+cd ../..
+```
+```
+cd ..
+```
+Installing cleverJAM
+```
+git clone https://github.com/SitrakaResearchAndPOC/fork_CleverJAM
+```
+```
+zip -r CleverJAM.zip CleverJAM/
+```
+#mv CleverJAM.zip ../Desktop/ltehack_backup/
+```
+cd CleverJAM/sources
+```
+#RUN GNURADIO COMPANION + FILE AND OPEN jam.grc + SET CORRECT FREQUENCY
+```
+gnuradio-companion
+```
 
+#USE "LTE DISCOVERY" OR "NETWORK SIGNAL GURU"  </br>
+#OR USE CODE USSD : *#*#4636#*#* on ANDROID </br>
+#OR USE CODE USSD : *#0011# on SAMSUNG </br>
+#OR USE CODE USSD : *300#12345#* on I-PHONE </br>
 
+#Clever jam could run with hopping frequency using python script </br>
+#regards read me cleverjam for test </br>
+</br>
+FLASHING FIRMEWARE HACKRF </br>
+#FLASHING HACKRF WITH NEW FIRMWARE </br>
+```
+wget https://github.com/greatscottgadgets/hackrf/releases/download/v2023.01.1/hackrf-2023.01.1.tar.xz
+```
+```
+tar -xvf hackrf-2023.01.1.tar.xz
+```
+```
+mv hackrf-2023.01.1.tar.xz ../../Desktop/ltehack_backup 
+```
+```
+cd hackrf-2023.01.1/firmware-bin/
+```
+#PRESS DFU AND RESET
+```
+hackrf_spiflash -w hackrf_one_usb.bin
+```
+#PRESS RESET </br>
+#apt-get install dfu-util </br>
+#dfu-util -D hackrf_one_usb.dfu </br>
+</br>
+#Test : plug hackrf </br>
+```
+hackrf_info
+```
+```
+SoapySDRUtil --info
+```
+```
+exit
+```
+
+#INSTALLING PROFILE </br>
+Have a look at [profile](https://documentation.ubuntu.com/lxd/en/latest/profiles/) or [pdf_profile](https://github.com/SitrakaResearchAndPOC/HackrfJAM_LXD/blob/main/How%20to%20use%20profiles%20-%20Canonical%20LXD%20documentation.pdf)
+INSTALL ON REAL MACHINE NOT THE CONTAINER
+```
+apt udpate
+```
+```
+apt-get install nano 
+```
+Paste this file
+```
+config:
+  environment.DISPLAY: :0
+  raw.idmap: both 1000 1000
+description: GUI LXD profile
+devices:
+  X0:
+    path: /tmp/.X11-unix/X0
+    source: /tmp/.X11-unix/X0
+    type: disk
+  my_gpu:
+    type: gpu
+name: gui
+```
+SAVE THE FILE as .gui.txt </br>
+Create the profile
+```
+lxc profile create gui
+```
+```
+lxc profile edit gui < .gui.txt
+```
+```
+rm .gui.txt
+```
+```
+lxc profile add HackrfJAM gui
+```
+```
+lxc config set HackrfJAM security.privileged=true
+```
+```
+lxc start HackrfJAM
+```
+```
+lxc exec HackrfJAM -- bash
+```
+Testing GUI Firefox
+```
+apt update
+```
+```
+apt-get install gui
+```
+```
+firefox
+```
+# PROBLEM OF DISPLAY
+Problem display at [display](https://bbs.archlinux.org/viewtopic.php?id=221449) or [pdf_display](https://github.com/SitrakaResearchAndPOC/HackrfJAM_LXD/blob/main/How%20to%20resolve%20%E2%80%9CNo%20protocol%20specified%20Unable%20to%20init%20server__%20%5BSolved%5D%20_%20Newbie%20Corner%20_%20Arch%20Linux%20Forums.pdf) </br>
+
+* reboot the real machine :
+```
+rm -rf /tmp/.X11-unix/X*
+```
+```
+reboot
+```
+* please reboot the container images : 
+```
+lxc stop  HackrfJam
+```
+```
+lxc start HackrJam
+```
+* listing the profile
+```
+lxc profile list
+```
+* adding the profile
+```
+lxc profile add HackrfJAM gui
+```
+* Please verify if there are two x0 and choose following ; 
+```
+chmod +x /tmp/.X11-unix/X0
+```
+```
+xhost +local
+```
+```
+pgrep -a X
+```
+```
+echo $DISPLAY
+```
+```
+echo $TERM
+```
+* IF PROBLEM PERSIST
+```
+lxc profile edit gui
+```
+Change as
+```
+```
+* remak all step on the PROBLEM OF DISPLAY
+* if problem still persists ; change by other number
 
 
 
