@@ -1,0 +1,116 @@
+    1  apt update
+    2  apt-get install libjeromq-java libzmq-ffi-perl libzmq-java libzmq-java-doc libzmq-jni libzmq3-dev libzmq5 libzmqpp-dev libzmqpp4 python3-zmq python3-zmq libboost-dev libpython3.8-dev cmake build-essential python3-qwt python3-guiqwt python3-pyqt5.qwt libgmp-dev libxi-dev libcppunit-dev libx11-6 libx11-dev flex libncurses5 libncurses5-dev libncursesw6 libpcsclite-dev libsdl1.2-dev zlib1g-dev libmpfr6 libmpc3 lemon aptitude libtinfo-dev libtool shtool autoconf git-core pkg-config make libmpfr-dev python-cheetah libmpc-dev libtalloc-dev libfftw3-dev libgnutls28-dev libtool-bin python-lxml libxml2-dev python-sip sofia-sip-bin libsofia-sip-ua-dev sofia-sip-bin bison libgmp3-dev alsa-oss asn1c libdbd-sqlite3 libboost-all-dev libusb-1.0-0-dev python-mako python3-mako doxygen python-docutils cmake build-essential g++ python-numpy python3-numpy swig libsqlite3-dev libi2c-dev libwxgtk3.0-gtk3-dev freeglut3-dev composer phpunit python3-pip libfontconfig1-dev libxrender-dev python-sip-dev  libusb-dev libusb-1.0.0-dev libcomedi-dev libzmq3-dev javascript-common libjs-jquery libjs-sphinxdoc libjs-underscore python-sphinx-click-doc python-sphinx-copybutton-doc python-sphinx-feature-classification-doc python-sphinx-gallery-doc python-sphinxcontrib.bibtex-doc python-sphinxcontrib.programoutput-doc python-sphinxcontrib.spelling-doc build-essential libgmp-dev libx11-6 libx11-dev flex libncurses5 libncurses5-dev libncursesw6 libpcsclite-dev zlib1g-dev libmpfr6 libmpc3 lemon aptitude libtinfo-dev libtool shtool autoconf git-core pkg-config make libmpfr-dev libmpc-dev libtalloc-dev libfftw3-dev libgnutls28-dev  libtool-bin libxml2-dev sofia-sip-bin libsofia-sip-ua-dev sofia-sip-bin bison libgmp3-dev alsa-oss asn1c libdbd-sqlite3 libboost-all-dev libusb-1.0-0-dev python-mako python3-mako doxygen python-docutils cmake build-essential g++ python-numpy python3-numpy swig libsqlite3-dev libi2c-dev libwxgtk3.0-gtk3-dev freeglut3-dev composer phpunit python3-pip
+    3  git clone https://github.com/ettusresearch/uhd
+    4  clear
+    5  ls
+    6  history
+    7  ls
+    8  exit
+    9  ls
+   10  cd grc38/
+   11  ls
+   12  cd gnuradio_38
+   13  ls
+   14  make
+   15  cd build/
+   16  make
+   17  make install
+   18  ldconfig
+   19  gnuradio-companion 
+   20  lxc profile device add HackrfJam gui
+   21  export PYTHONPATH=/usr/local/lib/python3/dist-packages:/usr/local/lib/python3.8/dist-packages:$PYTHONPATH
+   22  export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+   23  cd ../..
+   24  gnuradio-companion
+   25  clear
+   26  gnuradio-companion
+   27  exit
+   28  apt-get install firefox
+   29  exit
+   30  echo $DISPLAY
+   31  exit
+   32  ls
+   33  exit
+   34  cd grc38/
+   35  git clone https://github.com/osmocom/gr-osmosdr
+   36  cd gr-osmosdr/
+   37  git checkout cffef690f29e0793cd2d6c5d028c0c929115f0ac
+   38  cd ..
+   39  mv gr-osmosdr gr-osmosdr_grc38
+   40  zip -r gr-osmosdr_grc38.zip gr-osmosdr_grc38
+   41  cd gr-osmosdr_grc38 && mkdir build && cd build
+   42  cmake ..
+   43  make -j2
+   44  make install
+   45  ldconfig
+   46  cd ../..
+   47  cd ..
+   48  git clone https://github.com/jhonnybonny/CleverJAM
+   49  zip -r CleverJAM.zip CleverJAM/
+   50  cd CleverJAM/sources
+   51  gnuradio-companion 
+   52  export PYTHONPATH=/usr/local/lib/python3/dist-packages:/usr/local/lib/python3.8/dist-packages:$PYTHONPATH
+   53  export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+   54  gnuradio-companion 
+   55  exit
+   56  gnuradio-companion 
+   57  export PYTHONPATH=/usr/local/lib/python3/dist-packages:/usr/local/lib/python3.8/dist-packages:$PYTHONPATH
+   58  export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+   59  gnuradio-companion 
+   60  echo $DISPLAY
+   61  exit
+   62  export PYTHONPATH=/usr/local/lib/python3/dist-packages:/usr/local/lib/python3.8/dist-packages:$PYTHONPATH
+   63  export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+   64  gnuradio-companion 
+   65  exit
+   66  export PYTHONPATH=/usr/local/lib/python3/dist-packages:/usr/local/lib/python3.8/dist-packages:$PYTHONPATH
+   67  export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+   68  gnuradio-companion 
+   69  pgrep --help
+   70  exit
+   71  ls
+   72  nano
+   73  apt-get install nano
+   74  nano /root/.bashrc 
+   75  exit
+   76  nano grc.sh
+   77  exit
+   78  ls
+   79  chmod +x grc
+   80  mv grc.sh grc
+   81  chmod +x grc
+   82  grc
+   83  ./grc
+   84  exit
+   85  echo $DISPLAY
+   86  exit
+   87  help
+   88  clear
+   89  history
+   90  export PYTHONPATH=/usr/local/lib/python3/dist-packages:/usr/local/lib/python3.8/dist-packages:$PYTHONPATH
+   91  gnuradio-companion 
+   92  exit
+   93  ls
+   94  nano ./bashrc
+   95  gnuradio-companion 
+   96  exit
+   97  firefox
+   98  exit
+   99  firefox 
+  100  reboot
+  101  firefox 
+  102  exit
+  103  firefox 
+  104  exit
+  105  firefox 
+  106  gnuradio-companion 
+  107  reboot
+  108  gnuradio-companion 
+  109  ls
+  110  cd /home/ubuntu/.bashrc 
+  111  cat /home/ubuntu/.bashrc 
+  112  nano /home/ubuntu/.bashrc 
+  113  exit
+  114  gnuradio-companion 
+  115  history
+
