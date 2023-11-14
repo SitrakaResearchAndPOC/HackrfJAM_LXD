@@ -474,7 +474,7 @@ Testing GUI Firefox
 apt update
 ```
 ```
-apt-get install gui
+apt-get install firefox
 ```
 ```
 firefox
@@ -491,10 +491,10 @@ reboot
 ```
 * please reboot the container images : 
 ```
-lxc stop  HackrfJam
+lxc stop  HackrfJAM
 ```
 ```
-lxc start HackrJam
+lxc start HackrfJAM
 ```
 * listing the profile
 ```
@@ -526,11 +526,167 @@ lxc profile edit gui
 ```
 Change as
 ```
+config:
+  environment.DISPLAY: :1
+  raw.idmap: both 1000 1000
+description: GUI LXD profile
+devices:
+  X1:
+    path: /tmp/.X11-unix/X1
+    source: /tmp/.X11-unix/X1
+    type: disk
+  my_gpu:
+    type: gpu
+name: gui
 ```
 * remak all step on the PROBLEM OF DISPLAY
 * if problem still persists ; change by other number
 
+# SAVING FINAL IMAGE :
+
+* OLD VERSION [IMAGE]()
+```
+lxc publish HackrfJAM --alias HackrfJAM -f
+```
+Instance published with fingerprint: 4406e78ba577089a930fd9bb7ae92ffb494c321fd39ba9cbfdcc1ce23a6ccd1f
+```
+lxc image export HackrfJAM .
+```
+```
+md5sum 4406e78ba577089a930fd9bb7ae92ffb494c321fd39ba9cbfdcc1ce23a6ccd1f.tar.gz
+```
+c5c03fd9b7a33b1689a3dab9df2fabd6  4406e78ba577089a930fd9bb7ae92ffb494c321fd39ba9cbfdcc1ce23a6ccd1f.tar.gz
+```
+chmod 777 4406e78ba577089a930fd9bb7ae92ffb494c321fd39ba9cbfdcc1ce23a6ccd1f.tar.gz
+```
+
+* NEW VERSION (IMAGE)[]
+```
+lxc publish HackrfJAM --alias HackrfJAM -f
+```
+Instance published with fingerprint: 3b1b00e67439adbe6d6228dc9fd9e05c1463bbafd64b2e0438bcb499e8274211
+```
+lxc image export HackrfJAM .
+```
+```
+md5sum 3b1b00e67439adbe6d6228dc9fd9e05c1463bbafd64b2e0438bcb499e8274211.tar.gz
+```
+ed2381fd28cc9e452cb2447770ce1a32  3b1b00e67439adbe6d6228dc9fd9e05c1463bbafd64b2e0438bcb499e8274211.tar.gz
+```
+chmod 777 3b1b00e67439adbe6d6228dc9fd9e05c1463bbafd64b2e0438bcb499e8274211.tar.gz
+```
 
 
 
 
+
+# HackrfJAM FOR QUICK INSTALL
+## Installation with LXC  using ubuntu if not yet installed
+```
+apt update
+```
+```
+apt-get install lxd lxd-client
+```
+
+
+## Installation with LXC  using DragonOS if not yet installed
+```
+apt update
+```
+```
+apt-get install snapd  
+```
+```
+snap install lxd  
+```
+
+```
+snap install lxd-client  
+```
+
+## Initialisation of LXD if not yet installed
+```
+lxd init  
+```
+For questions please follow the default option, an image illustration is at [image](https://github.com/SitrakaResearchAndPOC/QCSuper/blob/main/screen.jpg) 
+  
+User need to be in group lxd :
+```
+sudo usermod -a G lxd $USER  
+```
+or  
+```
+sudo /usr/sbin/usermod lxd $USER  
+```
+
+$PATH need to contains /usr/local/bin, verify with :  
+```
+echo $PATH  
+```
+
+if not, setup this, or add this in your .bashrc or .zshrc or ...  
+
+```
+export PATH=$PATH:/usr/local/bin  
+```
+# IMPORTING IMAGES FOR QUICK INSTALL
+## downloading and importing image for Quick install
+OVAINA
+```
+wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1yYLVjgxRSxJlRqznnWTs0LUKTQzZKqZf' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1yYLVjgxRSxJlRqznnWTs0LUKTQzZKqZf" -O b16bbdd431cb94e1c6044533336e6fa44a1b8ee083b1f8bb3e397c0d75b92257.tar.gz   && rm -rf /tmp/cookies.txt  
+```
+```
+lxc image import b16bbdd431cb94e1c6044533336e6fa44a1b8ee083b1f8bb3e397c0d75b92257.tar.gz --alias HackrfJAMimage
+```
+```
+lxc launch HackrfJAMimage HackrfJAM
+```
+
+# LAUNCHING FOR QUICK INSTALL
+## Adding devices on lxc
+Plug usb ttl for motorola phone
+## Finding all devices
+```
+dmesg | grep ttyUSB*
+```
+## Adding devices USRP on LXC for Quick install
+```
+wget https://raw.githubusercontent.com/SitrakaResearchAndPOC/fork_QCSuperLXD/main/lxd-device
+```
+```
+chmod +x lxd-device
+```
+```
+sudo cp lxd-device /usr/local/bin
+```
+```
+lxd-device add HackrfJAM hackrf
+```
+Plug hackrf devices
+```
+lxc exec HackrfJAM -- uhd_images_downloader
+```
+```
+lxc exec HackrfJAM --  uhd_usrp_probe 
+```
+```
+lxc exec HackrfJAM -- uhd_find_devices 
+```
+```
+lxc exec HackrfJAM -- bash
+```
+
+## Setting privileges for Quick install
+```
+lxc config set HackrfJAM security.privileged=true
+```
+
+
+## launching for Quick install
+```
+lxc exec HackrfJAM -- bash
+```
+```
+exit
+```
