@@ -422,7 +422,7 @@ SoapySDRUtil --info
 exit
 ```
 
-#INSTALLING PROFILE </br>
+# INSTALLING PROFILE 
 Have a look at [profile](https://documentation.ubuntu.com/lxd/en/latest/profiles/) or [pdf_profile](https://github.com/SitrakaResearchAndPOC/HackrfJAM_LXD/blob/main/How%20to%20use%20profiles%20-%20Canonical%20LXD%20documentation.pdf)
 INSTALL ON REAL MACHINE NOT THE CONTAINER
 ```
@@ -634,21 +634,19 @@ export PATH=$PATH:/usr/local/bin
 ## downloading and importing image for Quick install
 OVAINA
 ```
-wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1yYLVjgxRSxJlRqznnWTs0LUKTQzZKqZf' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1yYLVjgxRSxJlRqznnWTs0LUKTQzZKqZf" -O b16bbdd431cb94e1c6044533336e6fa44a1b8ee083b1f8bb3e397c0d75b92257.tar.gz   && rm -rf /tmp/cookies.txt  
+wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1yYLVjgxRSxJlRqznnWTs0LUKTQzZKqZf' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1yYLVjgxRSxJlRqznnWTs0LUKTQzZKqZf" -O 3b1b00e67439adbe6d6228dc9fd9e05c1463bbafd64b2e0438bcb499e8274211.tar.gz   && rm -rf /tmp/cookies.txt  
 ```
 ```
-lxc image import b16bbdd431cb94e1c6044533336e6fa44a1b8ee083b1f8bb3e397c0d75b92257.tar.gz --alias HackrfJAMimage
+lxc image import 3b1b00e67439adbe6d6228dc9fd9e05c1463bbafd64b2e0438bcb499e8274211.tar.gz --alias HackrfJAMimage
 ```
 ```
 lxc launch HackrfJAMimage HackrfJAM
 ```
 
 # LAUNCHING FOR QUICK INSTALL
-## Adding devices on lxc
-Plug usb ttl for motorola phone
 ## Finding all devices
 ```
-dmesg | grep ttyUSB*
+lsusb
 ```
 ## Adding devices USRP on LXC for Quick install
 ```
@@ -690,3 +688,119 @@ lxc exec HackrfJAM -- bash
 ```
 exit
 ```
+# installing profile for quick install 
+Have a look at [profile](https://documentation.ubuntu.com/lxd/en/latest/profiles/) or [pdf_profile](https://github.com/SitrakaResearchAndPOC/HackrfJAM_LXD/blob/main/How%20to%20use%20profiles%20-%20Canonical%20LXD%20documentation.pdf)
+INSTALL ON REAL MACHINE NOT THE CONTAINER
+```
+apt udpate
+```
+```
+apt-get install nano 
+```
+Paste this file
+```
+config:
+  environment.DISPLAY: :0
+  raw.idmap: both 1000 1000
+description: GUI LXD profile
+devices:
+  X0:
+    path: /tmp/.X11-unix/X0
+    source: /tmp/.X11-unix/X0
+    type: disk
+  my_gpu:
+    type: gpu
+name: gui
+```
+SAVE THE FILE as .gui.txt </br>
+Create the profile
+```
+lxc profile create gui
+```
+```
+lxc profile edit gui < .gui.txt
+```
+```
+rm .gui.txt
+```
+```
+lxc profile add HackrfJAM gui
+```
+```
+lxc config set HackrfJAM security.privileged=true
+```
+```
+lxc start HackrfJAM
+```
+```
+lxc exec HackrfJAM -- bash
+```
+Testing GUI Firefox
+```
+firefox
+```
+## Problem of display for Quick install
+Problem display at [display](https://bbs.archlinux.org/viewtopic.php?id=221449) or [pdf_display](https://github.com/SitrakaResearchAndPOC/HackrfJAM_LXD/blob/main/How%20to%20resolve%20%E2%80%9CNo%20protocol%20specified%20Unable%20to%20init%20server__%20%5BSolved%5D%20_%20Newbie%20Corner%20_%20Arch%20Linux%20Forums.pdf) </br>
+
+* reboot the real machine :
+```
+rm -rf /tmp/.X11-unix/X*
+```
+```
+reboot
+```
+* please reboot the container images : 
+```
+lxc stop  HackrfJAM
+```
+```
+lxc start HackrfJAM
+```
+* listing the profile
+```
+lxc profile list
+```
+* adding the profile
+```
+lxc profile add HackrfJAM gui
+```
+* Please verify if there are two x0 and choose following ; 
+```
+chmod +x /tmp/.X11-unix/X0
+```
+```
+xhost +local
+```
+```
+pgrep -a X
+```
+```
+echo $DISPLAY
+```
+```
+echo $TERM
+```
+* IF PROBLEM PERSIST
+```
+lxc profile edit gui
+```
+Change as
+```
+config:
+  environment.DISPLAY: :1
+  raw.idmap: both 1000 1000
+description: GUI LXD profile
+devices:
+  X1:
+    path: /tmp/.X11-unix/X1
+    source: /tmp/.X11-unix/X1
+    type: disk
+  my_gpu:
+    type: gpu
+name: gui
+```
+* remak all step on the PROBLEM OF DISPLAY
+* if problem still persists ; change by other number
+## Testing jammer
+
+
