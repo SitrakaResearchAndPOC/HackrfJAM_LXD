@@ -29,7 +29,7 @@ cd ..
 ```
 zip -r uhd.zip uhd
 ```
-# mv uhd.zip ../../Desktop/ltehack_backup 
+#mv uhd.zip ../../Desktop/ltehack_backup 
 ```
 cd uhd/host/ && mkdir build && cd build/
 ```
@@ -52,6 +52,45 @@ cd ../../..
 ```
 /usr/local/lib/uhd/utils/uhd_images_downloader.py
 ```
-
+Installing SOAPY SDR
+```
+git clone https://github.com/pothosware/SoapySDR
+```
+```
+cd SoapySDR/
+```
+```
+git checkout f722f9ce5b629c3c44401a9bf628b3f8e67a9695
+```
+```
+cd ..
+```
+```
+zip -r SoapySDR.zip SoapySDR/
+```
+```
+#mv SoapySDR.zip ../../Desktop/ltehack_backup 
+```
+```
+cd SoapySDR && mkdir build && cd build
+```
+```
+cmake ..
+```
+```
+make
+```
+```
+make install
+```
+```
+ldconfig
+```
+```
+cd ../..
+```
+# INSTALLING GRC 38 + CLEVER JAM
+```
+```
 
 
