@@ -118,6 +118,160 @@ https://wiki.gnuradio.org/index.php/UbuntuInstall </br>
 #INSTALLING GNURADIO maint-3.8 DATE :  </br>
 #1Fevrier 2022 : maint-3.8 or 57bd109d5f0afdf09a3a52e226f464e8a71c5b82 </br>
 #*/ </br>
- 
+``` 
+mkdir grc38
+```
+```
+cd grc38
+```
+Installing Driver Hackrf
+```
+git clone https://github.com/mossmann/hackrf.git
+```
+```
+mv hackrf hackrf_grc38
+```
+```
+cd hackrf_grc38
+```
+```
+git checkout 61a06b904dbf5e54da1d84473004db0472950487
+```
+```
+cd ..
+```
+```
+zip -r hackrf_grc38.zip hackrf_grc38
+```
+#mv hackrf_grc38.zip ../../Desktop/ltehack_backup/
+```
+cd hackrf_grc38/host && mkdir build && cd build
+```
+```
+cmake ..
+```
+```
+make
+```
+```
+make install
+```
+```
+ldconfig
+```
+```
+cd ../../..
+```
+Installing SoaphHackrf
+```
+git clone https://github.com/pothosware/SoapyHackRF.git
+```
+```
+cd SoapyHackRF/
+```
+```
+git checkout 7d530872f96c1cbe0ed62617c32c48ce7e103e1d
+```
+```
+cd ..
+```
+```
+mv SoapyHackRF SoapyHackRF_grc38
+```
+```
+zip -r SoapyHackRF_grc38.zip SoapyHackRF_grc38
+```
+#mv SoapyHackRF_grc38.zip ../../Desktop/ltehack_backup/
+```
+cd SoapyHackRF_grc38 && mkdir build && cd build
+```
+```
+cmake ..
+```
+```
+make
+```
+```
+make install
+```
+```
+ldconfig
+```
+```
+cd ../..
+```
+#PLUG HACKRF
+#Test : 
+```
+hackrf_info
+```
+```
+SoapySDRUtil --info
+```
+#Available factories...hackrf, null,
+```
+SoapySDRUtil --probe="driver=hackrf"
+```
+```
+SoapySDRUtil --make="driver=hackrf"
+```
+
+Installing SoapyUHD
+```
+git clone https://github.com/pothosware/SoapyUHD
+```
+```
+cd SoapyUHD/
+```
+```
+git checkout 47972ba8b96beffb79915e300acea168bacd8d84
+```
+```
+cd ..
+```
+```
+mv SoapyUHD SoapyUHD_grc38
+```
+```
+zip -r SoapyUHD_grc38.zip SoapyUHD_grc38
+```
+#mv SoapyUHD_grc38.zip ../../Desktop/ltehack_backup/
+```
+cd SoapyUHD_grc38 && mkdir build && cd build
+```
+```
+cmake ..
+```
+```
+make
+```
+```
+make install
+```
+```
+ldconfig
+```
+```
+cd ../..
+```
+#Test :
+```
+uhd_usrp_probe
+```
+#https://wiki.gnuradio.org/index.php/UbuntuInstall
+#https://wiki.gnuradio.org/index.php?title=LinuxInstall#From_Source
+#https://github.com/gnuradio/volk/issues/340
+```
+apt-get update && apt-get clean && apt-get autoremove && apt-get install -y apt-utils
+```
+```
+apt-get install -y build-essential cmake git pkg-config python3-mako python3-numpy python3-distutils gcc-9 g++-9 gdb
+```
+
+
+
+
+
+
 
 
