@@ -1,0 +1,25 @@
+
+https://www.google.com/search?q=Unable+to+init+server%3A+Could+not+connect%3A+Connection+refused%0D%0AError%3A+cannot+open+display%3A+%3A0%0D%0A&sca_esv=584961557&source=hp&ei=qxVgZajKJIvXxc8Pwe-S8A0&iflsig=AO6bgOgAAAAAZWAju-ILhf8m8DBoirYHea7PetkZEzR5&ved=0ahUKEwjoy6aV1tuCAxWLa_EDHcG3BN4Q4dUDCAk&uact=5&oq=Unable+to+init+server%3A+Could+not+connect%3A+Connection+refused%0D%0AError%3A+cannot+open+display%3A+%3A0%0D%0A&gs_lp=Egdnd3Mtd2l6IlxVbmFibGUgdG8gaW5pdCBzZXJ2ZXI6IENvdWxkIG5vdCBjb25uZWN0OiBDb25uZWN0aW9uIHJlZnVzZWQKRXJyb3I6IGNhbm5vdCBvcGVuIGRpc3BsYXk6IDowCkgAUABYAHAAeACQAQCYAQCgAQCqAQC4AQPIAQD4AQL4AQE&sclient=gws-wiz
+
+
+
+https://www.linuxcapable.com/how-to-install-gnu-radio-on-ubuntu-linux/
+
+https://www.google.com/search?q=apt-get+install+gnuradio&sca_esv=583956873&ei=n0dbZeCnG5-bkdUPhPqw-As&ved=0ahUKEwig84KNwdKCAxWfTaQEHQQ9DL8Q4dUDCA8&uact=5&oq=apt-get+install+gnuradio&gs_lp=Egxnd3Mtd2l6LXNlcnAiGGFwdC1nZXQgaW5zdGFsbCBnbnVyYWRpb0jmOlD4Dli0NnAFeAGQAQCYAQCgAQCqAQC4AQPIAQD4AQGoAgDCAgoQABhHGNYEGLAD4gMEGAAgQYgGAZAGCA&sclient=gws-wiz-serp#ip=1
+
+access control disabled, clients can connect from any host
+root@ubuntu:/home/hackrfjam# chmod 777 /tmp/.X11-unix/X0
+root@ubuntu:/home/hackrfjam# lxc stop yateBTS 
+root@ubuntu:/home/hackrfjam# lxc start yateBTS 
+root@ubuntu:/home/hackrfjam# xhost +root
+    
+xhost:  bad hostname "root"
+root@ubuntu:/home/hackrfjam# 
+root@ubuntu:/home/hackrfjam# xhost +local
+xhost:  bad hostname "local"
+root@ubuntu:/home/hackrfjam# pgrep -a X
+2380 /usr/lib/xorg/Xorg vt2 -displayfd 3 -auth /run/user/1000/gdm/Xauthority -background none -noreset -keeptty -verbose 3
+root@ubuntu:/home/hackrfjam# echo $DISPLAY
+:0
+root@ubuntu:/home/hackrfjam# export DISPLAY=$DISPLAY
+root@ubuntu:/home/hackrfjam# lxc exec yateBTS -- firefox
