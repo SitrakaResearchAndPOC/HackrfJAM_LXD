@@ -692,7 +692,7 @@ exit
 Have a look at [profile](https://documentation.ubuntu.com/lxd/en/latest/profiles/) or [pdf_profile](https://github.com/SitrakaResearchAndPOC/HackrfJAM_LXD/blob/main/How%20to%20use%20profiles%20-%20Canonical%20LXD%20documentation.pdf)
 INSTALL ON REAL MACHINE NOT THE CONTAINER
 ```
-apt udpate
+apt update
 ```
 ```
 apt-get install nano 
@@ -769,7 +769,7 @@ lxc profile add HackrfJAM gui
 chmod +x /tmp/.X11-unix/X0
 ```
 ```
-xhost +local
+xhost +local:
 ```
 ```
 pgrep -a X
