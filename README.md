@@ -784,7 +784,7 @@ echo $TERM
 ```
 lxc profile edit gui
 ```
-Change as
+Change the number of dispaly as on the command echo $DISPLAY
 ```
 config:
   environment.DISPLAY: :1
@@ -800,7 +800,8 @@ devices:
 name: gui
 ```
 * remak all step on the PROBLEM OF DISPLAY
-* if problem still persists ; change by other number
+* if problem still persists ; change by other number and look at : </br> [link1](https://bbs.archlinux.org/viewtopic.php?id=221449) </br>[link2](https://bbs.archlinux.org/viewtopic.php?id=272491)  </br> [link3](https://bbs.archlinux.org/viewtopic.php?id=270585) </br> [link4](https://bbs.archlinux.org/viewtopic.php?id=281572) </br> [link5](https://bbs.archlinux.org/viewtopic.php?id=288581) </br>
+
   
 ## Testing jammer
 lxc exec HackrfJAM -- gnuradio-companion
