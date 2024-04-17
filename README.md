@@ -504,12 +504,16 @@ lxc profile list
 ```
 lxc profile add HackrfJAM gui
 ```
-* Please verify if there are two x0 and choose following ; 
+* Please verify if there are two x0 and choose following ;
+You could verify using
+```
+lsof -U | grep X1
+```
 ```
 chmod +x /tmp/.X11-unix/X0
 ```
 ```
-xhost +local
+xhost +local:
 ```
 ```
 pgrep -a X
